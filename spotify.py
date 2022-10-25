@@ -17,6 +17,7 @@ from sqlalchemy import create_engine
 # Make an api request to extract the data from Spotify
 user_id = "Alhamzah.alabboodi"
 url = "https://api.spotify.com/v1/me/player/recently-played?after="
+#token valid for one hour only
 TOKEN = "BQCX70q3crylBpXfqeItcvwyEI_5MK_LIKYlPPqJQ--mLw0Fn88yBBG-esmQTaPvrSDtFh2fQPdo5pvIx6kvVtgGhaeFpWFRE-9KG3u3tCoLZw33AMG237yNBm2i1qI37SVNd6_Tqy4XKy24zVQ8rCclRq4inikHNasGHWEs5KRSb8bcPn1iolU0Yv-eHzs"
 
 # Step number 2 : transform (validate)
@@ -92,7 +93,7 @@ if check_if_validate_data(song_df):
     print("Data is valid, proceed to Load stage")
 
 # Load
-engine = sqlalchemy.create_engine("postgresql://postgres:password@localhost:5432/my_played_tracks")
+engine = sqlalchemy.create_engine("postgresql://postgres:/my_played_tracks")
 
 sql_query = """
 CREATE TABLE IF NOT EXISTS my_played_tracks(
